@@ -1,0 +1,24 @@
+name:                bahn
+version:             0.1.0.0
+homepage:            http://github.com/jhedev/bahn
+license:             MIT
+license-file:        LICENSE
+author:              Joel Hermanns
+maintainer:          joel.hermanns@gmail.com
+copyright:           2015 Joel Hermanns
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+executable bahn
+  main-is:             Main.hs
+  build-depends:         base >=4.6 && <5
+                       , async
+                       , bytestring
+                       , html-conduit
+                       , http-conduit
+                       , text
+                       , url
+                       , xml-conduit
+  default-language:    Haskell2010
