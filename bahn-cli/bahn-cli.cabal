@@ -1,5 +1,5 @@
-name:                bahn
-version:             0.1.0.0
+name:                bahn-cli
+version:             0.2.0.0
 homepage:            http://github.com/jhedev/bahn
 license:             MIT
 license-file:        LICENSE
