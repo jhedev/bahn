@@ -1,4 +1,4 @@
-name:                haskell-servant-codegen
+name:                bahn
 version:             0.1.0.0
 synopsis:            Swagger-codegen example for Haskell servant
 description:         Please see README.md
@@ -65,7 +65,7 @@ executable client
                      , QuickCheck
                      , servant
                      , servant-client
-                     , haskell-servant-codegen
+                     , bahn
   default-language:    Haskell2010
 
 executable server
@@ -76,5 +76,5 @@ executable server
                      , warp
                      , servant-server
                      , servant-mock
-                     , haskell-servant-codegen
+                     , bahn
   default-language:    Haskell2010
