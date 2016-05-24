@@ -1,80 +1,33 @@
 name:                bahn
 version:             0.1.0.0
-synopsis:            Swagger-codegen example for Haskell servant
+synopsis:            Auto-generated API bindings for db-fahrplan
 description:         Please see README.md
-homepage:            https://github.com/swagger-api/swagger-codegen#readme
-license:             Apache-2.0
-license-file:        LICENSE
-author:              Masahiro Yamauchi
-maintainer:          sgt.yamauchi@gmail.com
-copyright:           2015- Masahiro Yamauchi
+homepage:            https://github.com/jhedev/bahn
+author:              Joel Hermanns
+maintainer:          joel.hermanns@gmail.com
+copyright:           2016 - Joel Hermanns
 category:            Web
 build-type:          Simple
--- extra-source-files:
 cabal-version:       >=1.10
 
 library
   hs-source-dirs:      lib
-  exposed-modules:     Utils
-                     , Web.Bahn.Model.Operator
-                     , Web.Bahn.Model.Types
-                     , Web.Bahn.Model.JourneyDetailRef
-                     , Web.Bahn.Model.Operators
-                     , Web.Bahn.Model.DepartureBoard
-                     , Web.Bahn.Model.LocalTime
-                     , Web.Bahn.Model.Stop
-                     , Web.Bahn.Model.ArrivalBoard
-                     , Web.Bahn.Model.LocalDate
-                     , Web.Bahn.Model.LocationResponse
-                     , Web.Bahn.Model.ArrivalBoardResponse
-                     , Web.Bahn.Model.Name
-                     , Web.Bahn.Model.Names
-                     , Web.Bahn.Model.DepartureBoardResponse
-                     , Web.Bahn.Model.JourneyDetail
-                     , Web.Bahn.Model.Type
-                     , Web.Bahn.Model.DepartureOrArrival
-                     , Web.Bahn.Model.Note
-                     , Web.Bahn.Model.Stops
-                     , Web.Bahn.Model.JourneyDetailResponse
-                     , Web.Bahn.Model.StopLocation
-                     , Web.Bahn.Model.LocationList
-                     , Web.Bahn.Model.Notes
-                     , Web.Bahn.DefaultApi
-                     , Apis
+  exposed-modules:     Bahn.API
+                     , Bahn.Types
   ghc-options:         -Wall
   build-depends:       base
                      , aeson
                      , text
-                     , split
                      , containers
                      , network-uri
-                     , QuickCheck
                      , servant
+                     , http-api-data
                      , servant-client
-  default-language:    Haskell2010
-
-executable client
-  hs-source-dirs:      client
-  main-is:             Main.hs
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
-  build-depends:       base
-                     , either
-                     , transformers
-                     , split
-                     , network-uri
-                     , QuickCheck
-                     , servant
-                     , servant-client
-                     , bahn
-  default-language:    Haskell2010
-
-executable server
-  hs-source-dirs:      server
-  main-is:             Main.hs
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
-  build-depends:       base
-                     , warp
                      , servant-server
-                     , servant-mock
-                     , bahn
+                     , servant
+                     , warp
+                     , transformers
+                     , mtl
+                     , http-client
+                     , http-types
   default-language:    Haskell2010
