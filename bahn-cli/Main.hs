@@ -17,8 +17,7 @@ import           Text.XML.Cursor
 
 
 data Travel = Travel
-  { date      :: String
-  , departure :: String
+  { departure :: String
   , prognosis :: String
   , duration  :: String
   , changes   :: String
@@ -26,8 +25,7 @@ data Travel = Travel
   }
 
 instance Show Travel where
-    show Travel{..} = intercalate " | " [ date
-                                        , departure
+    show Travel{..} = intercalate " | " [ departure
                                         , prognosis
                                         , duration
                                         , changes
@@ -59,14 +57,13 @@ cursorFor u = do
 
 findStartNodes :: Cursor -> [Cursor]
 findStartNodes = element "table" &// element "tr" >=>
-                                       attributeIs "class" " firstrow"
+                                       attributeIs "class" "firstrow"
 
 extractData :: Cursor -> Travel
-extractData c = Travel date dep prog dur ch prod
+extractData c = Travel dep prog dur ch prod
     where
       classCursor cls = head $ c $// element "td" >=> attributeIs "class" cls
       toString = T.unpack . T.strip . T.concat
-      date = toString $ classCursor "date" $// content
       dep = toString $ classCursor "time" $/ content
       prog = toString $ classCursor "time" $// element "span" &/ content
       dur = toString $ classCursor "duration lastrow" $/ content
@@ -82,5 +79,5 @@ main = do
           _     -> error "Not enough or too much arguments."
     cursor <- cursorFor url
     putStr "\n"
-    putStrLn "Date | Departure | Prognosis | Duration | Changes | Products"
+    putStrLn "Departure | Prognosis | Duration | Changes | Products"
     mapM_ print $ cursor $// (findStartNodes &| extractData)
